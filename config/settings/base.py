@@ -5,7 +5,7 @@ Base settings to build other settings files upon.
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (docker_gamaron/config/settings/base.py - 3 = docker_gamaron/)
-APPS_DIR = ROOT_DIR.path('docker_gamaron')
+APPS_DIR = ROOT_DIR.path('api_gamaron')
 
 env = environ.Env()
 
@@ -67,11 +67,10 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 LOCAL_APPS = [
-    'api.users.apps.UsersConfig'
-    'api.itens.apps.ItensConfig'
-    'api.itens.apps.QuestsConfig'
+    'api_gamaron.users',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
