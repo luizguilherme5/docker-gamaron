@@ -5,25 +5,49 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+from django.contrib import admin
+from django.conf.urls import url, include
+from rest_framework import routers
+from api.users.views import UserViewSet, GroupViewSet
+from api.itens.views import ItenViewSet, PlayerInvetoryViewSet
+from api.quests.views import QuestViewSet, JournalViewSet
+
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'groups', GroupViewSet)
+router.register(r'itens', ItenViewSet)
+router.register(r'inventory', PlayerInvetoryViewSet)
+router.register(r'quests', QuestViewSet)
+router.register(r'journal', JournalViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path(
-        "about/",
-        TemplateView.as_view(template_name="pages/about.html"),
-        name="about",
-    ),
-    # Django Admin, use {% url 'admin:index' %}
-    path(settings.ADMIN_URL, admin.site.urls),
-    # User management
-    path(
-        "users/",
-        include("docker_gamaron.users.urls", namespace="users"),
-    ),
-    path("accounts/", include("allauth.urls")),
-    # Your stuff: custom urls includes go here
-] + static(
-    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-)
+    url(r'^admin/', admin.site.urls),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]
+
+# urlpatterns = [
+#     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+#     path(
+#         "about/",
+#         TemplateView.as_view(template_name="pages/about.html"),
+#         name="about",
+#     ),
+#     # Django Admin, use {% url 'admin:index' %}
+#     path(settings.ADMIN_URL, admin.site.urls),
+#     # User management
+#     path(
+#         "users/",
+#         include("docker_gamaron.users.urls", namespace="users"),
+#     ),
+#     path("accounts/", include("allauth.urls")),
+#     # Your stuff: custom urls includes go here
+# ] + static(
+#     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+# )
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit

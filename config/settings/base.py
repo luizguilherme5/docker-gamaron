@@ -69,7 +69,9 @@ THIRD_PARTY_APPS = [
     'rest_framework',
 ]
 LOCAL_APPS = [
-    'docker_gamaron.users.apps.UsersAppConfig',
+    'api.users.apps.UsersConfig'
+    'api.itens.apps.ItensConfig'
+    'api.itens.apps.QuestsConfig'
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
