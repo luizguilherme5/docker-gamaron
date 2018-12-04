@@ -1,0 +1,5 @@
+[run]
+include = docker_gamaron/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin

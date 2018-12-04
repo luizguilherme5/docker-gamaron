@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=docker_gamaron
+POSTGRES_USER=TQnNuGJPsCJvppnSFNDvvekgnUoOIOkr
+POSTGRES_PASSWORD=IdfclUSqGuPSCwHHCOVq8XI6t8fXgRL34UvSoH37JHUtN99uMAyMw3lGGJdpXQDo
